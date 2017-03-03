@@ -1,2 +1,15 @@
+image: docker:latest
+
+variables:
+  DOCKER_DRIVER: overlay
+
+services:
+- docker:dind
+
+before_script:
+- docker info
+
 build:
-    script: "docker build --pull --tag penkit/alpine:latest ."
+  stage: build
+  script:
+  - docker build --pull -t penkit/alpine:latest .
