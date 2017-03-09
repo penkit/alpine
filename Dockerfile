@@ -1,5 +1,8 @@
 FROM alpine:3.5
 
+# add penkit license to all downstream images
+COPY LICENSE /PENKIT_LICENSE
+
 # configure penkit public key
 COPY penkit.rsa.pub /etc/apk/keys/
 
