@@ -10,7 +10,10 @@ COPY penkit.rsa.pub /etc/apk/keys/
 COPY alpine-setup.sh /usr/local/sbin/
 RUN alpine-setup.sh
 
+# configure PS1 format and coloring
+COPY set-ps1.sh /etc/profile.d/
+
 # configure default entrypoint and command
 COPY alpine-entrypoint.sh /usr/local/sbin/
 ENTRYPOINT ["/usr/local/sbin/alpine-entrypoint.sh"]
-CMD ["bash"]
+CMD ["bash", "-l"]
